@@ -1,0 +1,21 @@
+CREATE TABLE "Persona" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Nombre" VARCHAR, "Ci" INTEGER)
+
+CREATE TABLE "Fecha" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Fecha" DATETIME, "DiaS" VARCHAR,"Dia" INTEGER, "Mes" INTEGER, "Ano" INTEGER, "Persona_Id" INTEGER NOT NULL )
+
+CREATE TABLE "Tiempo" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Tiempo" DATETIME, "Hora" INTEGER, "Minuto" INTEGER, "Segundo" INTEGER, "STotal" INTEGER, "Evento_Id" INTEGER)
+
+CREATE TABLE "Evento" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Evento" VARCHAR, "Dispositivo" VARCHAR)
+
+INSERT INTO Persona (Nombre, Ci) SELECT Nombre, CI FROM assistance [WHERE stotal>0] GROUP BY Nombre;
+
+INSERT INTO Fecha (Fecha, DiaS, Dia, Mes, Ano, Persona_id)SELECT  Fecha, DiaS, Dia, Mes, Ano, Persona.Id from assistance inner join Persona on assistance.CI=Persona.Ci
+
+INSERT INTO Evento (Evento, Dispositivo) select evento, dispositivo from assistance [where STotal>0] group by evento
+
+INSERT INTO Tiempo (Tiempo, Hora, Minuto, Segundo, STotal, Evento_Id) SELECT Tiempo, Hora, Minuto, Segundo, STotal, Evento.Id from assistance inner join Evento on assistance.Evento=Evento.Evento
+
+CREATE TABLE "Fecha_has_Tiempo" ("Fecha_Id" INTEGER, "Tiempo_Id" INTEGER, PRIMARY KEY ("Fecha_Id", "Tiempo_Id"))
+
+SELECT Fecha.id, Tiempo.id from assistance inner join Fecha, Tiempo on assistance.Fecha=Fecha.Fecha and assistance.Tiempo=Tiempo.Tiempo
+
+INSERT INTO Fecha_has_Tiempo (Fecha_Id, Tiempo_Id) SELECT Fecha.id, Tiempo.id from assistance inner join Fecha, Tiempo on assistance.Fecha=Fecha.Fecha and assistance.Tiempo=Tiempo.Tiempo

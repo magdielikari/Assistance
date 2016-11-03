@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'CI',
             'Nombre',
             'Fecha',
-            //'DiaS',
+            'DiaS',
             //'Dia',
             //'Mes',
             // 'Ano',
