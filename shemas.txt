@@ -2,20 +2,38 @@ CREATE TABLE "Persona" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQU
 
 CREATE TABLE "Fecha" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Fecha" DATETIME, "DiaS" VARCHAR,"Dia" INTEGER, "Mes" INTEGER, "Ano" INTEGER, "Persona_Id" INTEGER NOT NULL )
 
-CREATE TABLE "Tiempo" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Tiempo" DATETIME, "Hora" INTEGER, "Minuto" INTEGER, "Segundo" INTEGER, "STotal" INTEGER, "Evento_Id" INTEGER)
+CREATE TABLE "Tiempo" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Tiempo" DATETIME, "Hora" INTEGER, "Minuto" INTEGER, "Segundo" INTEGER, "STotal" INTEGER,  "Evento" VARCHAR, "Dispositivo" VARCHAR, "Fecha_Id" INTEGER)
 
-CREATE TABLE "Evento" ("Id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , "Evento" VARCHAR, "Dispositivo" VARCHAR)
+INSERT INTO Persona (Nombre, Ci) SELECT DISTINCT Nombre, CI FROM assistance
 
-INSERT INTO Persona (Nombre, Ci) SELECT Nombre, CI FROM assistance [WHERE stotal>0] GROUP BY Nombre;
+INSERT INTO Fecha (Fecha, DiaS, Dia, Mes, Ano, Persona_id) SELECT DISTINCT Fecha, DiaS, Dia, Mes, Ano, Persona.Id from assistance inner join Persona on assistance.CI=Persona.Ci 
 
-INSERT INTO Fecha (Fecha, DiaS, Dia, Mes, Ano, Persona_id)SELECT  Fecha, DiaS, Dia, Mes, Ano, Persona.Id from assistance inner join Persona on assistance.CI=Persona.Ci
+INSERT INTO Evento (Evento, Dispositivo) select DISTINCT evento, dispositivo from assistance 
 
-INSERT INTO Evento (Evento, Dispositivo) select evento, dispositivo from assistance [where STotal>0] group by evento
-
-INSERT INTO Tiempo (Tiempo, Hora, Minuto, Segundo, STotal, Evento_Id) SELECT Tiempo, Hora, Minuto, Segundo, STotal, Evento.Id from assistance inner join Evento on assistance.Evento=Evento.Evento
-
-CREATE TABLE "Fecha_has_Tiempo" ("Fecha_Id" INTEGER, "Tiempo_Id" INTEGER, PRIMARY KEY ("Fecha_Id", "Tiempo_Id"))
+INSERT INTO Tiempo (Tiempo, Hora, Minuto, Segundo, STotal, Evento_Id) SELECT DISTINCT Tiempo, Hora, Minuto, Segundo, STotal, Evento.Id from assistance inner join Evento on assistance.Evento=Evento.Evento
 
 SELECT Fecha.id, Tiempo.id from assistance inner join Fecha, Tiempo on assistance.Fecha=Fecha.Fecha and assistance.Tiempo=Tiempo.Tiempo
 
 INSERT INTO Fecha_has_Tiempo (Fecha_Id, Tiempo_Id) SELECT Fecha.id, Tiempo.id from assistance inner join Fecha, Tiempo on assistance.Fecha=Fecha.Fecha and assistance.Tiempo=Tiempo.Tiempo
+
+SELECT DISTINCT Fecha.id, Tiempo.id from assistance as A 
+inner join Fecha on A.Fecha=Fecha.Fecha 
+inner join Tiempo on A.STotal=Tiempo.STotal
+
+select Fecha, Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id
+
+select Fecha.Id, Fecha, Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id
+
+SELECT Tiempo, Hora, Minuto, Segundo, STotal from assistance inner join Persona on assistance.CI=Persona.Ci
+
+select * from dsfg where CI in (select Fecha.Id, Fecha, Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id)
+
+select * from assistance where ci in (select ci from persona)
+
+select Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id
+union
+select * from fecha
+
+select fecha.id, Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id
+
+where EXISTS (select * from assistance)
