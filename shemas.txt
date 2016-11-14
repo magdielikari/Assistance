@@ -37,3 +37,16 @@ select * from fecha
 select fecha.id, Ci from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id
 
 where EXISTS (select * from assistance)
+
+select assistance.CI as cedula, assistance.fecha as Fe from assistance inner join 
+ (select Fecha.Fecha as F, Persona.Ci as C from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id)
+on cedula=C and Fe=F
+
+select assistance.Tiempo, assistance.Hora, assistance.Minuto, assistance.Segundo, assistance.Stotal, assistance.Evento, assistance.Dispositivo, assistance.CI as cedula, assistance.fecha as Fe, fecha_id from assistance inner join 
+(select Fecha.Fecha as F, Persona.Ci as C, Fecha.Id as Fecha_id from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id)
+on cedula=C and Fe=F
+
+
+Listo!!
+
+INSERT INTO Evento (Tiempo, Hora, Minuto, Segundo, Stotal, Evento, Dispositivo, Fecha_id) select assistance.Tiempo as Tiempo, assistance.Hora as Hora, assistance.Minuto as Minuto, assistance.Segundo as Segundo, assistance.Stotal as Stotal, assistance.Evento as Evento, assistance.Dispositivo as Dispositivo, fecha_id from assistance inner join (select Fecha.Fecha as F, Persona.Ci as C, Fecha.Id as Fecha_id from Fecha inner join Persona on Fecha.Persona_Id=Persona.Id) on assistance.CI=C and assistance.fecha=F
