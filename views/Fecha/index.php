@@ -14,6 +14,7 @@ $gridColumns = [
         'attribute'=>'Persona_Id',
         'value' => 'persona.Nombre',
     ],
+
     'Fecha',
     'DiaS',
     [

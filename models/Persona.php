@@ -40,7 +40,7 @@ class Persona extends \yii\db\ActiveRecord
         return [
             'Id' => 'ID',
             'Nombre' => 'Nombre',
-            'Ci' => 'Ci',
+            'Ci' => 'Cedula',
         ];
     }
 
