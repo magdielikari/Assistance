@@ -18,7 +18,9 @@
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "phpoffice/phpexcel": "dev-develop"
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-export": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

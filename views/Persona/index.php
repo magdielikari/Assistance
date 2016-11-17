@@ -37,14 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'options'=>['class'=>'text-center'],
             ],
 
-            [
-                'attribute'=>'Evento',
-                'format'=>'raw',
-                'value'=>function($data){
-                    return ModelUtility::handler($data, 'evento', 'Evento');
-                },
-                'options'=>['class'=>'text-center'],
-            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

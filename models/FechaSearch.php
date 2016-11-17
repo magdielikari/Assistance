@@ -18,8 +18,8 @@ class FechaSearch extends Fecha
     public function rules()
     {
         return [
-            [['Id', 'Dia', 'Mes', 'Ano', 'Persona_Id'], 'integer'],
-            [['Fecha', 'DiaS'], 'safe'],
+            [['Id', 'Dia', 'Mes', 'Ano', ], 'integer'],
+            [['Fecha', 'DiaS', 'Persona_Id'], 'safe'],
         ];
     }
 
@@ -67,7 +67,6 @@ class FechaSearch extends Fecha
             'Dia' => $this->Dia,
             'Mes' => $this->Mes,
             'Ano' => $this->Ano,
-            'Persona_Id' => $this->Persona_Id,
         ]);
 
         $query->andFilterWhere(['like', 'DiaS', $this->DiaS])

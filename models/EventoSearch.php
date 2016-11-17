@@ -18,8 +18,8 @@ class EventoSearch extends Evento
     public function rules()
     {
         return [
-            [['Id', 'Hora', 'Minuto', 'Segundo', 'STotal', 'Fecha_Id'], 'integer'],
-            [['Tiempo', 'Evento', 'Dispositivo'], 'safe'],
+            [['Id', 'Hora', 'Minuto', 'Segundo', 'STotal'], 'integer'],
+            [['Tiempo', 'Evento', 'Dispositivo', 'Fecha_Id'], 'safe'],
         ];
     }
 
@@ -57,6 +57,12 @@ class EventoSearch extends Evento
             return $dataProvider;
         }
 
+        // Query for name in Persona 
+//        $query->joinWith('persona');
+
+        // Query for name in Persona 
+        $query->joinWith('fecha');
+
         // grid filtering conditions
         $query->andFilterWhere([
             'Id' => $this->Id,
@@ -65,11 +71,12 @@ class EventoSearch extends Evento
             'Minuto' => $this->Minuto,
             'Segundo' => $this->Segundo,
             'STotal' => $this->STotal,
-            'Fecha_Id' => $this->Fecha_Id,
         ]);
 
         $query->andFilterWhere(['like', 'Evento', $this->Evento])
-            ->andFilterWhere(['like', 'Dispositivo', $this->Dispositivo]);
+            ->andFilterWhere(['like', 'Dispositivo', $this->Dispositivo])
+            ->andFilterWhere(['like', 'fecha.Fecha', $this->Fecha_Id]);
+//            ->andFilterWhere(['like', 'persona.Nombre', $this->Persona_Id]);
 
         return $dataProvider;
     }

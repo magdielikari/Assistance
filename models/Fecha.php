@@ -33,7 +33,7 @@ class Fecha extends \yii\db\ActiveRecord
         return [
             [['Fecha'], 'safe'],
             [['DiaS'], 'string'],
-            [['Dia', 'Mes', 'Ano', 'Persona_Id'], 'integer'],
+            [['Dia', 'Mes', 'Ano','Persona_Id'], 'integer'],
             [['Persona_Id'], 'required'],
         ];
     }

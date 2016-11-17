@@ -27,10 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Id',
             [
                 'label' => 'Nombre',
+                'attribute' => 'Persona_Id',
                 'value' => 'persona.Nombre',
             ],
             [
                 'label' => 'Fecha',
+                'attribute' => 'Fecha_Id',
                 'value' => 'fecha.Fecha',
             ],
             'Tiempo',
@@ -41,7 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'Evento',
             //'Dispositivo',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'visibleButtons' => [False, False, True]
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
