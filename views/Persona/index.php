@@ -34,6 +34,22 @@ $gridColumns = [
     ]
 ];
 
+$gridrColumns = [
+    ['class' => 'yii\grid\SerialColumn'],
+
+    //'Id',
+    'Nombre',
+    'Ci',
+    [
+        'attribute'=>'Fecha',
+        'format'=>'raw',
+        'value'=>function($data){
+            return ModelUtility::handlerr($data, 'fecha', 'Fecha');
+        },
+        'options'=>['class'=>'text-center'],
+    ],
+];
+
 $this->title = 'Personas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -46,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 // Renders a export dropdown menu
 ExportMenu::widget([
     'dataProvider' => $dataProvider,
-    'columns' => $gridColumns
+    'columns' => $gridrColumns
 ]);
 ?>
 

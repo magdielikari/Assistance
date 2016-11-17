@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
         <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
+            Gracias por contactarnos. Nosotros responderemos a la mayor brevedad posible.
         </div>
-
+<!--
         <p>
             Note that if you turn on the Yii debugger, you should be able
             to view the mail message on the mail panel of the debugger.
@@ -30,12 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 application component to be false to enable email sending.
             <?php endif; ?>
         </p>
-
+-->
     <?php else: ?>
 
         <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
+            Si tiene alguna duda o preguntas, por favor llene el siguiente formulario para contactarnos. Gracias.
         </p>
 
         <div class="row">
@@ -56,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
 
                 <?php ActiveForm::end(); ?>

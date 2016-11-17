@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
     <div class="jumbotron">
         <?=
-            Html::img('@web/img/logo.png', ['alt'=>Yii::$app->name]);
+            Html::img('@web/img/logo.jpg', ['alt'=>Yii::$app->name]);
         ?>
     </div>
 
@@ -19,40 +19,28 @@ use yii\helpers\Url;
             <div class="col-lg-3">
                 <h2>Persona</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Muestra días laborados por persona. Comprende la información de trabajadores que al menos poseen 1 entrada o 1 salida. Acá se podrá filtrar por Nombre o Cédula de identidad.</p>
 
                 <p><a class="btn btn-default" href="<?= Url::to(['persona/index']);?>">Persona &raquo;</a></p>
             </div>
             <div class="col-lg-3">
                 <h2>Fecha</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Muestra las horas de entradas y salidas por fechas de cada trabajador, puede filtrarse por nombre, fecha y nombre del día. </p>
 
                 <p><a class="btn btn-default" href="<?= Url::to(['fecha/index']);?>">Fecha &raquo;</a></p>
             </div>
             <div class="col-lg-3">
                 <h2>Evento</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Muestra todos los eventos (Entradas, Salidas). </p>
 
                 <p><a class="btn btn-default" href="<?= Url::to(['evento/index']);?>">Evento &raquo;</a></p>
             </div>
             <div class="col-lg-3">
                 <h2>Actulización</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p>Formulario en construcción para la actualización de los datos</p>
 
                 <p><a class="btn btn-default" href="<?= Url::to(['site/about']);?>">Actulización &raquo;</a></p>
             </div>

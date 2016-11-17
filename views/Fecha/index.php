@@ -14,7 +14,7 @@ $gridColumns = [
         'attribute'=>'Persona_Id',
         'value' => 'persona.Nombre',
     ],
-
+    
     'Fecha',
     'DiaS',
     [
@@ -45,6 +45,39 @@ $gridColumns = [
     ]
 ];
 
+$gridrColumns = [
+    ['class' => 'yii\grid\SerialColumn'],
+
+    //'Id',
+    [
+        'label' => 'Nombre',
+        'attribute'=>'Persona_Id',
+        'value' => 'persona.Nombre',
+    ],
+
+    'Fecha',
+    'DiaS',
+    [
+        'attribute'=>'Dia Laborado',
+        'format'=>'raw',
+        'value'=>function($data){
+            return ModelUtility::handlerrs($data, 'evento', 'STotal', 'Tiempo', 'Evento');
+        },
+        'options'=>['class'=>'text-center'],
+    ],
+    [
+        'attribute'=>'Evento',
+        'format'=>'raw',
+        'value'=>function($data){
+            return ModelUtility::handlerrss($data, 'evento', 'STotal', 'Tiempo','Evento');
+        },
+        'options'=>['class'=>'text-center'],
+    ],
+    //'Dia',
+    //'Mes',
+    //'Ano',
+];
+
 $this->title = 'Fechas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -58,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
 // Renders a export dropdown menu
 ExportMenu::widget([
     'dataProvider' => $dataProvider,
-    'columns' => $gridColumns
+    'columns' => $gridrColumns
 ]);
 ?>
 

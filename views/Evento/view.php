@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\ModelUtility;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Evento */
@@ -17,7 +18,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'Id',
+            [
+                'label' => 'Nombre',
+                'attribute' => 'Persona_Id',
+                'value' => 'persona.Nombre',
+            ],
+            [
+                'label' => 'Fecha',
+                'attribute' => 'Fecha_Id',
+                'value' => 'fecha.Fecha',
+            ],
             'Tiempo',
             'Hora',
             'Minuto',
@@ -25,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'STotal',
             'Evento',
             'Dispositivo',
-            'Fecha_Id',
         ],
     ]) ?>
 
