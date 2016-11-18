@@ -40,7 +40,7 @@ use yii\helpers\Url;
             <div class="col-lg-3">
                 <h2>Actulización</h2>
 
-                <p>Formulario en construcción para la actualización de los datos</p>
+                <p>Formulario (en construcción) para la actualización de los datos</p>
 
                 <p><a class="btn btn-default" href="<?= Url::to(['site/about']);?>">Actulización &raquo;</a></p>
             </div>
